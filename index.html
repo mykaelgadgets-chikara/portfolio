@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tobechukwu Onyegbule</title>
+<meta name="description" content="Portfolio of Tobe Onyegbule — an AI & automation operator who builds governed multi-agent systems that run real business operations.">
+<style>
+  :root{
+    --bg:#F5F3ED; --bg-2:#ECE8DE; --surface:#FFFFFF; --surface-2:#F9F7F1;
+    --ink:#171A1F; --ink-2:#3E434D; --muted:#6B7079; --line:#DED9CD; --line-2:#CBC5B6;
+    --brand:#B26A12; --brand-ink:#8A520C; --brand-soft:#F3E6CE;
+    --live:#2E8F5B; --live-soft:#DCEEE2;
+    --shadow:0 1px 2px rgba(20,20,25,.05), 0 10px 30px rgba(20,20,25,.06);
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --display:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+    --maxw:1080px;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#0D1016; --bg-2:#12161F; --surface:#161B25; --surface-2:#1B212D;
+    --ink:#EEF1F6; --ink-2:#C2C9D5; --muted:#868E9C; --line:#242C39; --line-2:#333D4D;
+    --brand:#E7A63F; --brand-ink:#F1BE68; --brand-soft:#3A2B12;
+    --live:#46C282; --live-soft:#10281C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px rgba(0,0,0,.4);
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0D1016; --bg-2:#12161F; --surface:#161B25; --surface-2:#1B212D;
+    --ink:#EEF1F6; --ink-2:#C2C9D5; --muted:#868E9C; --line:#242C39; --line-2:#333D4D;
+    --brand:#E7A63F; --brand-ink:#F1BE68; --brand-soft:#3A2B12;
+    --live:#46C282; --live-soft:#10281C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:22px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  h2{font-size:clamp(1.5rem,3.4vw,2.2rem)}
+  h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:var(--brand-ink);text-decoration:none}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);font-weight:600}
+  .muted{color:var(--muted)}
+  section{padding-block:clamp(40px,6.5vw,72px);border-top:1px solid var(--line)}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-h .n{font-family:var(--mono);color:var(--brand);font-size:.8rem;font-weight:600}
+
+  /* nav */
+  .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+    background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav .row{display:flex;align-items:center;gap:14px;height:58px}
+  .brand{font-family:var(--display);font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px var(--brand-soft)}
+  .navlinks{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{font-size:.84rem;color:var(--ink-2);padding:7px 11px;border-radius:8px;white-space:nowrap}
+  .navlinks a:hover{background:var(--surface-2);color:var(--ink)}
+  .tbtn{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:8px;width:34px;height:34px;cursor:pointer;flex:none}
+
+  /* hero */
+  .hero{padding-top:clamp(38px,6vw,64px)}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.6rem);margin-top:16px}
+  .hero .tag{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.6vw,1.7rem);color:var(--brand-ink);margin-top:14px;letter-spacing:-.01em}
+  .hero .lede{max-width:60ch;margin-top:20px;font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--ink-2)}
+  .hero .loc{margin-top:16px;font-family:var(--mono);font-size:.78rem;color:var(--muted);display:flex;gap:8px 16px;flex-wrap:wrap;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--live-soft);color:var(--live)}
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--live)}
+  .cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;padding:11px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--brand);color:#1a1206}
+  .btn-primary:hover{filter:brightness(1.05)}
+  .btn-ghost{background:var(--surface);border-color:var(--line-2);color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface-2)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:38px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:var(--shadow)}
+  .stat .v{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em}
+  .stat .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  .lede-about{max-width:66ch;color:var(--ink-2);font-size:clamp(1rem,1.4vw,1.1rem)}
+  .lede-about b{color:var(--ink)}
+
+  /* work */
+  .work{display:grid;gap:16px}
+  .case{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow)}
+  .case .top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .case h3{font-size:clamp(1.3rem,2.6vw,1.7rem)}
+  .case .sub{color:var(--muted);font-family:var(--mono);font-size:.76rem;margin-top:6px}
+  .case p{color:var(--ink-2);margin-top:14px;max-width:70ch}
+  .kv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+  .kv .c{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .kv .c .v{font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
+  .kv .c .k{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:3px}
+  .feat{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:9px}
+  .feat li{display:flex;gap:10px;font-size:.92rem;color:var(--ink-2)}
+  .feat li::before{content:"";flex:none;width:7px;height:7px;border-radius:2px;background:var(--brand);margin-top:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+  .tag{font-family:var(--mono);font-size:.7rem;padding:4px 9px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2)}
+  .note{margin-top:16px;font-size:.82rem;color:var(--muted);border-left:2px solid var(--brand);padding-left:12px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .mini{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+  .mini h3{margin-bottom:4px}
+  .mini .sub{color:var(--muted);font-family:var(--mono);font-size:.72rem;margin-bottom:10px}
+  .mini p{color:var(--ink-2);font-size:.92rem}
+
+  /* skills */
+  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .skillcol h3{font-size:.82rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--brand);font-weight:600;margin-bottom:12px}
+  .skillcol .tags{margin-top:0}
+
+  /* experience */
+  .tl{display:grid;gap:0}
+  .job{display:grid;grid-template-columns:172px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--line)}
+  .job:first-child{border-top:0}
+  .job .when{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+  .job .org{font-family:var(--display);font-weight:700;font-size:1.05rem}
+  .job .roles{margin-top:8px;display:grid;gap:6px}
+  .job .role{font-size:.92rem;color:var(--ink-2)}
+  .job .role b{color:var(--ink);font-weight:600}
+  .job ul{margin:8px 0 0;padding-left:16px;color:var(--ink-2);font-size:.9rem}
+  .job li{margin-bottom:4px}
+
+  .edu{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  /* contact */
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow);text-align:center}
+  .contact h2{font-size:clamp(1.6rem,4vw,2.6rem)}
+  .contact p{color:var(--ink-2);max-width:52ch;margin:14px auto 0}
+  .contact .cta{justify-content:center}
+
+  footer{padding-block:30px;color:var(--muted);font-family:var(--mono);font-size:.74rem;text-align:center}
+
+  @media (max-width:860px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .kv{grid-template-columns:repeat(2,1fr)}
+    .grid2,.edu{grid-template-columns:1fr}
+    .skillgrid{grid-template-columns:1fr}
+    .job{grid-template-columns:1fr;gap:8px}
+  }
+  html{scroll-behavior:smooth}
+  [id]{scroll-margin-top:74px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+</head>
+<body style="margin:0">
+<div class="nav">
+  <div class="wrap row">
+    <div class="brand"><span class="dot"></span> Tobe Onyegbule</div>
+    <nav class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="tbtn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">◐</button>
+  </div>
+</div>
+
+<header class="wrap hero">
+  <div class="eyebrow">AI &amp; Automation Operator · Prompt Engineering Trainer · Lagos, Nigeria</div>
+  <h1>Tobechukwu<br>Onyegbule</h1>
+  <div class="tag">I build governed multi-agent AI systems that run real business operations.</div>
+  <p class="lede">Not chatbots and one-off scripts — production infrastructure. I turn messy, human-run
+    processes into reliable, observable, low-touch systems where every money-touching action is
+    <b style="color:var(--ink)">audited, approved and reversible.</b> Founder-operator by trade, systems-thinker by
+    instinct, security-first by training.</p>
+  <div class="loc">
+    <span class="pill">Available for consulting</span>
+    <span><b style="color:var(--ink-2)">Stack:</b> n8n · MCP · Claude Code · Codex · Next.js/TS</span>
+  </div>
+  <div class="cta">
+    <a class="btn btn-primary" href="#contact">Work with me →</a>
+    <a class="btn btn-ghost" href="#work">See the work</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v">7</div><div class="k">Specialist AI agents</div></div>
+    <div class="stat"><div class="v">~60</div><div class="k">Automated workflows</div></div>
+    <div class="stat"><div class="v">258</div><div class="k">Governance decisions logged</div></div>
+    <div class="stat"><div class="v">2018</div><div class="k">Operating a real business since</div></div>
+  </div>
+</header>
+
+<section id="about"><div class="wrap">
+  <div class="sec-h"><span class="n">01</span><h2>Who I am</h2></div>
+  <p class="lede-about">I'm an <b>AI &amp; automation operator</b> who has spent 8 years founding and running
+    <b>Mykael Gadgets</b>, a Lagos retail business — sourcing, pricing, sales, support, the whole thing. When AI
+    agents became capable enough to do the work, I didn't buy a template; I <b>built the operating system</b> I
+    wished I had. That's Chikara. Because the workflows touch money and customers, I engineer them like a
+    security professional would — least privilege, auditability, fail-closed defaults, verified change control —
+    an instinct rooted in an early <b>cybersecurity</b> foundation. I also ship production software directly, so
+    I can drop below the no-code layer whenever the problem needs it — and I <b>teach it</b>, having run a live
+    prompt-engineering masterclass and coached professionals to apply AI to their own industries.</p>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="sec-h"><span class="n">02</span><h2>Selected work</h2></div>
+  <div class="work">
+
+    <article class="case">
+      <div class="top">
+        <div>
+          <h3>Chikara — an AI operating system for a retail business</h3>
+          <div class="sub">Sole architect &amp; builder · ~12 months, ongoing · <span style="color:var(--live)">In controlled rollout</span></div>
+        </div>
+        <span class="pill">Flagship</span>
+      </div>
+      <p>A hub-and-spoke multi-agent system. A coordinator agent routes work to specialists for operations,
+        pricing, sales, finance and content — each cleared by a trust/audit layer before it writes anything. It
+        captures the business's daily events into one reconciled source of truth and surfaces them to the
+        operator over Telegram.</p>
+
+      <div class="kv">
+        <div class="c"><div class="v">7</div><div class="k">Specialist agents</div></div>
+        <div class="c"><div class="v">~60</div><div class="k">Workflows (38 live)</div></div>
+        <div class="c"><div class="v">258</div><div class="k">Owner decisions logged</div></div>
+        <div class="c"><div class="v">90+</div><div class="k">Regression checks in CI</div></div>
+      </div>
+
+      <ul class="feat">
+        <li><b style="color:var(--ink)">Governance, not just automation:</b> deterministic routing from a skill registry — the system, not an LLM's guess, decides what runs.</li>
+        <li><b style="color:var(--ink)">A data-audit trust gate</b> on every money path — nothing writes on unverified data.</li>
+        <li><b style="color:var(--ink)">Human approval + reversible deploys</b> — every consequential change is snapshotted and rollback-able.</li>
+        <li><b style="color:var(--ink)">Measured baseline it targets:</b> ~7 hrs/week of manual intake, pricing and follow-up — about 9 work-weeks a year.</li>
+      </ul>
+
+      <div class="tags">
+        <span class="tag">n8n</span><span class="tag">MCP</span><span class="tag">Google Sheets</span>
+        <span class="tag">Telegram</span><span class="tag">Claude Code</span><span class="tag">Codex</span>
+        <span class="tag">Multi-agent orchestration</span><span class="tag">Write-safety</span>
+      </div>
+      <p class="note">Targets under validation: ≥95% of daily events captured same-day · ≥30% fewer manual
+        interventions · zero duplicate or unauthorized writes. Verified business-value figures will be published
+        once the controlled rollout completes — I don't claim results I haven't measured.</p>
+    </article>
+
+    <article class="case">
+      <div class="top">
+        <div>
+          <h3>Weekly Intelligence Agent — for an oil &amp; gas market entrant</h3>
+          <div class="sub">Context-specific prompt engineering · client engagement · designed, delivered &amp; taught</div>
+        </div>
+        <span class="pill">Client work</span>
+      </div>
+      <p>For a Nigerian company entering the oil &amp; gas sector, I built a production-grade "weekly intelligence
+        agent" — a master system prompt that turns a general AI model into a board-level domain consultant,
+        producing a weekly market-intelligence briefing and a one-page executive summary (Word + PDF) — then
+        trained the client to run it themselves.</p>
+      <ul class="feat">
+        <li><b style="color:var(--ink)">Engineered for rigour, not fluency:</b> source credibility-tiering, mandatory dated citations, confidence scoring, explicit assumption-tagging, and a hard never-fabricate rule.</li>
+        <li><b style="color:var(--ink)">Built-in fraud screening:</b> every opportunity screened against known scam patterns and classified verified / plausible / unverified / likely-scam — because that market is a high-fraud zone.</li>
+        <li><b style="color:var(--ink)">Tailored to the client's real edge:</b> a bespoke strategic annex mapping their existing business into specific regulators, funds and lawful entry routes — not generic advice.</li>
+        <li><b style="color:var(--ink)">Versioned, with weekly continuity</b> — a change-log and a live-opportunity tracker — handed over as a system the client operates independently.</li>
+      </ul>
+      <div class="tags"><span class="tag">Prompt engineering</span><span class="tag">Domain expertise</span><span class="tag">Anti-hallucination design</span><span class="tag">Risk screening</span><span class="tag">Claude</span></div>
+      <p class="note">A private engagement — commercial outcomes belong to the client. What's shown is the system I designed and the engineering behind it.</p>
+    </article>
+
+    <div class="grid2">
+      <article class="mini">
+        <h3>PLUX — non-custodial crypto payment links</h3>
+        <div class="sub">Design &amp; build · Next.js / TypeScript</div>
+        <p>Create a request, share a link, get paid wallet-to-wallet — no account, no custody. Built with a
+          hard money-safety discipline: bigint amounts, decimals read from the contract, only registry-listed
+          tokens payable. Proof I ship real code, not just orchestration.</p>
+        <div class="tags"><span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">wagmi / viem</span><span class="tag">Vitest</span></div>
+      </article>
+      <article class="mini">
+        <h3>Data OS — operational source of truth</h3>
+        <div class="sub">Design &amp; build · Google Sheets ledgers</div>
+        <p>The single reconciled spine for the business: structured ledgers for inventory, receipts, sales,
+          pricing and cashflow that every agent reads and writes through one audited path, with data-quality
+          and reconciliation rules keeping records consistent.</p>
+        <div class="tags"><span class="tag">Data modelling</span><span class="tag">Reconciliation</span><span class="tag">Composio</span></div>
+      </article>
+      <article class="mini">
+        <h3>AI-enabled sales, content &amp; support workflows</h3>
+        <div class="sub">Design &amp; build · LLM agents + guardrails</div>
+        <p>Sales capture and confirmation, invoice/receipt generation, product captions and follow-up — LLM
+          agents draft and classify while deterministic guardrails protect prices, facts and sends, with owner
+          approval on anything customer-facing.</p>
+        <div class="tags"><span class="tag">Prompt engineering</span><span class="tag">Draft-not-send</span><span class="tag">Human-in-the-loop</span></div>
+      </article>
+      <article class="mini">
+        <h3>n8n outreach-drafting workflow</h3>
+        <div class="sub">Build-in-public · with theStackedHQ</div>
+        <p>A workflow that turns a Google Sheet of prospects into reviewed first-message drafts — IDs each row,
+          judges whether it's worth drafting, batches up to 25 in fives, waits out mid-typing triggers, and
+          reports failures instead of failing silently. It drafts; it never sends.</p>
+        <div class="tags"><span class="tag">n8n</span><span class="tag">Batching</span><span class="tag">Error-aware</span></div>
+      </article>
+    </div>
+  </div>
+</div></section>
+
+<section id="teaching"><div class="wrap">
+  <div class="sec-h"><span class="n">03</span><h2>Teaching &amp; enablement</h2></div>
+  <p class="lede-about" style="margin-bottom:22px">I don't just build systems — I teach people to work with AI. After going deep
+    on prompt engineering, I turned it into a curriculum and delivered it live.</p>
+  <div class="grid2">
+    <article class="mini">
+      <h3>AI Prompting Masterclass</h3>
+      <div class="sub">Live cohort · Feb 2026 · designed &amp; delivered solo</div>
+      <p>Ran a live class for a cohort of professionals — entrepreneurs, writers, a public servant, a teacher,
+        creatives — taking them from "I get generic answers" to structured, context-rich prompting. Built the
+        whole thing myself: a student handbook, speaker notes, a 15-day content calendar, a refresher quiz, and a
+        registration/ops pipeline.</p>
+      <div class="tags"><span class="tag">Curriculum design</span><span class="tag">Live teaching</span><span class="tag">Student handbook</span></div>
+    </article>
+    <article class="mini">
+      <h3>Context-specific 1:1 training</h3>
+      <div class="sub">Tailored to each learner's industry</div>
+      <p>Coached professionals on applying AI to their exact work — a creator on YouTube automation, thumbnails
+        and storytelling, and a professional in oil &amp; gas, for whom I built a custom "weekly intelligence" AI
+        agent. Not generic prompting — their job, done measurably better with AI.</p>
+      <div class="tags"><span class="tag">Oil &amp; gas</span><span class="tag">YouTube automation</span><span class="tag">Custom AI agents</span></div>
+    </article>
+  </div>
+  <p class="note" style="margin-top:16px">Backed by my own maintained prompt libraries and ongoing research into
+    prompting as a productised skill.</p>
+</div></section>
+
+<section id="approach"><div class="wrap">
+  <div class="sec-h"><span class="n">04</span><h2>How I work &amp; what I use</h2></div>
+  <div class="skillgrid">
+    <div class="skillcol">
+      <h3>Automation &amp; agents</h3>
+      <div class="tags">
+        <span class="tag">n8n</span><span class="tag">MCP</span><span class="tag">Multi-agent orchestration</span>
+        <span class="tag">Claude Code</span><span class="tag">Codex</span><span class="tag">Prompt engineering</span>
+        <span class="tag">Business process design</span>
+      </div>
+    </div>
+    <div class="skillcol">
+      <h3>Engineering</h3>
+      <div class="tags">
+        <span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">APIs</span>
+        <span class="tag">Google Sheets / Apps Script</span><span class="tag">Git &amp; CI</span><span class="tag">Composio</span>
+      </div>
+    </div>
+    <div class="skillcol">
+      <h3>Foundations</h3>
+      <div class="tags">
+        <span class="tag">Systems thinking</span><span class="tag">Write-safety &amp; rollback</span>
+        <span class="tag">Cybersecurity instincts</span><span class="tag">Data reconciliation</span><span class="tag">Owner-of-record governance</span>
+      </div>
+    </div>
+  </div>
+  <p class="lede-about" style="margin-top:26px">My rule: <b>reproduce before diagnosing, isolate one variable and
+    measure, and verify on the thing itself.</b> I don't ship a claim I haven't run, and I don't let automation
+    make an unverified or irreversible change. That discipline is why the systems I build hold up when something
+    fails.</p>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="sec-h"><span class="n">05</span><h2>Experience</h2></div>
+  <div class="tl">
+    <div class="job">
+      <div class="when">Aug 2025 — Present<br>Remote</div>
+      <div>
+        <div class="org">AI &amp; Automation Consultant</div>
+        <div class="roles"><div class="role">Self-employed. Design and deploy AI-assisted automation systems for real
+          operational problems — agent orchestration, prompt/context engineering, and n8n workflows with
+          human-in-the-loop guardrails.</div></div>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">2018 — Present<br>Ikeja, Lagos</div>
+      <div>
+        <div class="org">Mykael Gadgets</div>
+        <div class="roles">
+          <div class="role"><b>Founder &amp; Operator</b> — built and run a retail business selling authentic gadgets, trusted since 2018.</div>
+          <div class="role"><b>Head of Business Process Automation</b> (Oct 2025 – Present)</div>
+        </div>
+        <ul>
+          <li>Automated inventory updates from supplier messages, cutting stock-update time significantly.</li>
+          <li>Built automated customer follow-up workflows, boosting engagement and retention.</li>
+          <li>Streamlined order processing with automation, reducing errors and saving operational hours.</li>
+        </ul>
+        <div class="roles" style="margin-top:8px">
+          <div class="role"><b>Website &amp; Sales Manager</b> (2022 – 2025) · <b>Digital Marketing Officer</b> (2019 – 2022)</div>
+        </div>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">Sep 2026 — Present<br>Remote</div>
+      <div>
+        <div class="org">Big Brains</div>
+        <div class="roles"><div class="role"><b>Machine Learning &amp; Generative AI Intern</b> — strengthening ML foundations
+          (data, model evaluation, GenAI) while building AI-assisted workflows alongside a global cohort.</div></div>
+      </div>
+    </div>
+    <div class="job">
+      <div class="when">Jan — Apr 2020<br>Lagos</div>
+      <div>
+        <div class="org">Tenece Professional Services</div>
+        <div class="roles"><div class="role"><b>Information Technology Security Specialist</b> (Internship) — the
+          security-function grounding behind the least-privilege, auditable, fail-closed way I now build automation.</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <div class="sec-h"><span class="n">06</span><h2>Education</h2></div>
+  <div class="edu">
+    <div class="mini">
+      <h3>AI &amp; Automation</h3>
+      <div class="sub">TS Academy · 2026</div>
+      <p>Focused training in AI agents, automation and applied prompt engineering.</p>
+    </div>
+    <div class="mini">
+      <h3>National Diploma (ND)</h3>
+      <div class="sub">Yaba College of Technology (YABATECH) · 2018 – 2021</div>
+      <p>Foundational technical education.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="contact">
+    <div class="eyebrow" style="justify-content:center">Available for AI &amp; automation consulting</div>
+    <h2 style="margin-top:12px">Let's build something that runs itself.</h2>
+    <p>If you have a business process that's manual, error-prone or trapped in someone's head, I'll turn it into a
+      governed, observable system — and prove it holds up before it touches anything that matters.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="mailto:tobemykael@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/tobechukwu-onyegbule-7731971a2/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Tobechukwu Onyegbule · AI &amp; Automation Operator · Lagos, Nigeria</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeToggle'), KEY='tobe-portfolio-theme';
+  try{var s=localStorage.getItem(KEY); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  function cur(){var a=root.getAttribute('data-theme'); if(a) return a;
+    return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+  btn.addEventListener('click',function(){
+    var next=cur()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem(KEY,next);}catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>
